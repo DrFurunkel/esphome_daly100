@@ -8,7 +8,7 @@ esp32:
 #Logging
 logger:
   level: DEBUG
-  baud_rate: 0
+#  baud_rate: 0
 
 #Network
 wifi:
@@ -17,7 +17,7 @@ wifi:
 
 # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Esp-hall-daly-bms-kuede Fallback Hotspot"
+    ssid: "Esp-hall-daly-bms- Fallback"
     password: !secret wifi_captive_password
 
 #Sensor
@@ -64,8 +64,8 @@ binary_sensor:
 
 #UART
 uart:
-  tx_pin: GPIO1
-  rx_pin: GPIO3
+  tx_pin: GPIO17
+  rx_pin: GPIO16
   baud_rate: 9600
 
 daly_bms:
