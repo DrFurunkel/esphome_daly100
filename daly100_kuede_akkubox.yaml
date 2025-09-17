@@ -1,0 +1,84 @@
+#General
+esphome:
+  name: hall-daly-bms
+
+esp32:
+  board: nodemcu-32s
+
+#Logging
+logger:
+  level: DEBUG
+  baud_rate: 0
+
+#Network
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+# Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp-hall-daly-bms-kuede Fallback Hotspot"
+    password: "hh3144422erynqw532G1"
+
+#Sensor
+sensor:
+  - platform: daly_bms
+    voltage:
+      name: "Battery Voltage"
+    current:
+      name: "Battery Current"
+    battery_level:
+      name: "Battery Level"
+    max_cell_voltage:
+      name: "Max Cell Voltage"
+    max_cell_voltage_number:
+      name: "Max Cell Voltage Number"
+    min_cell_voltage:
+      name: "Min Cell Voltage"
+    min_cell_voltage_number:
+      name: "Min Cell Voltage Number"
+    max_temperature:
+      name: "Max Temperature"
+    max_temperature_probe_number:
+      name: "Max Temperature Probe Number"
+    min_temperature:
+      name: "Min Temperature"
+    min_temperature_probe_number:
+      name: "Min Temperature Probe Number"
+    remaining_capacity:
+      name: "Remaining Capacity"
+    cells_number:
+      name: "Cells Number"
+    temperature_1:
+      name: "Temperature 1"
+    temperature_2:
+      name: "Temperature 2"
+
+#Binary Sensor
+binary_sensor:
+  - platform: daly_bms
+    charging_mos_enabled:
+      name: "Charging MOS"
+    discharging_mos_enabled:
+      name: "Discharging MOS"   
+
+#UART
+uart:
+  tx_pin: GPIO1
+  rx_pin: GPIO3
+  baud_rate: 9600
+
+daly_bms:
+  update_interval: 20s
+
+text_sensor:
+  - platform: daly_bms
+    status:
+      name: "BMS Status"
+
+#Others    
+api:
+#ota:
+web_server:
+  local: true
+  
